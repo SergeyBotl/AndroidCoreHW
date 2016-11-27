@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lessons2weather.</string>
+    <string name="action_open">Open.</string>
+    <string name="action_save">Save.</string>
+    <string name="action_delete">Delete.</string>
+
+</resources>
