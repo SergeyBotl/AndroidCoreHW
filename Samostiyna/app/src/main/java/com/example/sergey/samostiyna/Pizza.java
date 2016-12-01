@@ -59,10 +59,7 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Pizza{" +
-                "name=" + name +
-                ", weight=" + weight +
-                ", thickness=" + thickness +
-                '}';
+        return String.format("Название: %s, Вес: %s,  Толщина: %s  ", name, weight, thickness);
+
     }
 }
