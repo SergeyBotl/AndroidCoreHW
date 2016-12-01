@@ -25,7 +25,7 @@ public class Main2Activity extends AppCompatActivity {
         mButonCount = (Button) findViewById(R.id.buttonCount);
         mTextView = (TextView) findViewById(R.id.textView);
         mEditText = (EditText) findViewById(R.id.editText);
-        mTextView.setText("Count: ");
+       // mTextView.setText("Count: ");
 
         mEditText.addTextChangedListener(new TextWatcher() {
             @Override
