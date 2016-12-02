@@ -18,9 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private EditText editText1, editText2;
     private List<Pizza> list = new ArrayList<>();
-    private List<String> thicknesses = new ArrayList<>(Arrays.asList("thick", "thin"));
     private Spinner spinner;
-    private ArrayAdapter<String> adapter;
 
 
     @Override
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
 
         spinner = (Spinner) findViewById(R.id.spinner);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, thicknesses);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Arrays.asList("thick", "thin"));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -44,13 +42,13 @@ public class MainActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Thickness t = Thickness.valueOf(spinner.getSelectedItem().toString());
-                Log.i("TAG","ID "+spinner.getSelectedItemId()+" Position "+spinner.getSelectedItemPosition());
-                list.add(new Pizza(editText1.getText().toString(),
-                        Float.valueOf(editText2.getText().toString()),
-                        t));
-
+                if (editText1.getText().toString().length() != 0 && editText2.getText().toString().length() != 0) {
+                    Thickness t = Thickness.valueOf(spinner.getSelectedItem().toString());
+                    Log.i("TAG", "ID " + spinner.getSelectedItemId() + " Position " + spinner.getSelectedItemPosition());
+                    list.add(new Pizza(editText1.getText().toString(),
+                            Float.valueOf(editText2.getText().toString()),
+                            t));
+                }
             }
         });
         buttonRead.setOnClickListener(new View.OnClickListener() {
