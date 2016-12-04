@@ -93,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (b) {
-               // Toast.makeText(context, "group  " + i + "  open  ", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(context, "group  " + i + "  open  ", Toast.LENGTH_SHORT).show();
             } else {
-               // Toast.makeText(context, "group  " + i + "  close  ", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(context, "group  " + i + "  close  ", Toast.LENGTH_SHORT).show();
             }
 
             TextView textGroup = (TextView) view.findViewById(R.id.textGroup);
@@ -105,13 +105,13 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
-            final int j = i+1, j1 = i1+1;
+            final int j = i + 1, j1 = i1 + 1;
             final boolean bb = b;
 
             if (b) {
-               // Toast.makeText(context, "Child  " + i+(i1+1) + " "+b, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(context, "Child  " + i+(i1+1) + " "+b, Toast.LENGTH_SHORT).show();
             } else {
-               // Toast.makeText(context, "Child  " + i+(i1+1) + " "+b, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(context, "Child  " + i+(i1+1) + " "+b, Toast.LENGTH_SHORT).show();
             }
 
             if (view == null) {
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    Toast.makeText(context, "Check Box " + b + " \ngroup " + j + " child " + j1 + " " + "\n text  "+textChild.getText(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Check Box " + b + " \ngroup " + j + " child " + j1 + " " + "\n text  " + textChild.getText(), Toast.LENGTH_SHORT).show();
                 }
             });
             return view;

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="1" />
+
+    <Button
+        android:layout_gravity="fill"
+        android:text="2" />
+
+    <Button android:text="2" />
+
+    <Button android:text="2" />
+
+    <Button android:text="2" />
+
+    <Button android:text="2" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:text="2" />
+
+    <Button android:text="2" />
+
+    <Button android:text="2" />
+</TableLayout>
