@@ -12,10 +12,6 @@ public class DAOuser {
         list.add(u);
     }
 
-    public List<User> getList() {
-        return list;
-    }
-
     boolean ifThereUser(User user) {
         for (User u : list) {
             if (u.equals(user)) {
@@ -24,10 +20,7 @@ public class DAOuser {
         }
         return false;
     }
-
-   boolean userRegistration(User user){
-
-       return false;
-   }
-
+    public List<User> getList() {
+        return list;
+    }
 }

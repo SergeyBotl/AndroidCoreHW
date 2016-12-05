@@ -1,5 +1,6 @@
 package com.example.sergey.lesson4extra;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -42,4 +43,10 @@ public class Main2Activity extends AppCompatActivity {
         return list;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Main2Activity.this, StartActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
+    }
 }
