@@ -9,7 +9,6 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     private int a[] = {8, 0, -1, 6, -4, 3, -4, 9, 0};
-
     private int b[] = new int[a.length];
     private int position = 0, index = 0;
 
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         b[position] = nunber;
         position++;
     }
-
+//======================================================
     String raznost() {
         int sum = 0;
         for (int i : a) {
