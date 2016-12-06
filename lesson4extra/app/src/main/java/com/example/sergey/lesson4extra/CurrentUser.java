@@ -3,7 +3,7 @@ package com.example.sergey.lesson4extra;
 public class CurrentUser {
     DAOuser daOuser = new DAOuser();
 
-    private User userRegistry;
+    private static User userRegistry;
 
 
     public boolean logIn(User user) {
