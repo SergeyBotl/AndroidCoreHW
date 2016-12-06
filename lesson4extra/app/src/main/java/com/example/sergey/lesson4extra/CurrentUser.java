@@ -1,5 +1,6 @@
 package com.example.sergey.lesson4extra;
 
+
 public class CurrentUser {
     DAOuser daOuser = new DAOuser();
 
@@ -8,6 +9,7 @@ public class CurrentUser {
 
     public boolean logIn(User user) {
         if (daOuser.ifThereUser(user)) {
+
             userRegistry = user;
             return true;
         }

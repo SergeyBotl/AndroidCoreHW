@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
 
-    tools:context="com.example.sergey.lesson4extra.Main2Activity">
+    tools:context="com.example.sergey.lesson4extra.TableActivity">
 
     <ListView
         android:layout_width="match_parent"

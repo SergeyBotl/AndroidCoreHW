@@ -11,7 +11,7 @@
         <activity android:name=".LoginActivity">
 
         </activity>
-        <activity android:name=".Main2Activity" />
+        <activity android:name=".TableActivity" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
