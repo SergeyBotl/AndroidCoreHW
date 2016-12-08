@@ -29,9 +29,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "clickk Button", Toast.LENGTH_SHORT).show();
-               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-            }
+              }
         });
 
         button.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -42,6 +40,43 @@ public class MainActivity extends AppCompatActivity {
         });
 
         button.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        lastX = motionEvent.getX();
+                        lastY = motionEvent.getY();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        if (motionEvent.getX() - lastX > 1 && motionEvent.getY() - lastY > 1) {
+                            Toast.makeText(getApplicationContext(), "click Button ", Toast.LENGTH_SHORT).show();
+                            button.performClick();
+                            return false;
+                        }
+                        Toast.makeText(getApplicationContext(), "move Button", Toast.LENGTH_SHORT).show();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
+                }
+                return true;
+            }
+        });
+
+        findViewById(R.id.checkBox).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "clickk Button", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        findViewById(R.id.checkBox).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Toast.makeText(getApplicationContext(), "focus Button", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        findViewById(R.id.checkBox).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()) {
