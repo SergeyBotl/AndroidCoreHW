@@ -15,12 +15,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     String[] s = {"a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x"};
-    List<?> list = new ArrayList<>(Arrays.asList(s));
+    List<String> list = new ArrayList<>(Arrays.asList(s));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.i("tag","on ");
         ListView listView = (ListView) findViewById(R.id.listView);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(adapter);
@@ -28,11 +29,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("tag","int "+i+" long "+l);
+                //не работает
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                Log.i("tag","onNothingSelected ");
             }
         });
     }
