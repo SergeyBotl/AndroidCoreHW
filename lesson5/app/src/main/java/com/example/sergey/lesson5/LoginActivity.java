@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
-    private User user;
+
     private UserDAO userDao = UserDAO.getUserDAO();
     private TextView textInfo;
     private EditText textLogIn, textPass;
@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
         preferences = getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
         editor = preferences.edit();
 
-
         textInfo = (TextView) findViewById(R.id.textInfo);
         textLogIn = (EditText) findViewById(R.id.log_inET);
         textPass = (EditText) findViewById(R.id.passET);
@@ -39,37 +38,56 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.buttonLogIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                log = textLogIn.getText().toString();
-                pas = textPass.getText().toString();
-                user = new User(log, pas);
                 Log.i("TAG", "buttonLogIn");
-
-                if (user != null && userDao.isLogin(user)) {
+                if (getUser() != null && userDao.isLogin(getUser())) {
                     editor.putBoolean(NAME_PREFERENCES_IS, true).apply();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
-                    finish();
+                    //finish();
                 } else {
-
                     textInfo.setTextColor(getResources().getColor(R.color.colorRed));
                     textInfo.setText("Неверный логин или пароль");
                 }
             }
         });
 
-        findViewById(R.id.buttonRegistri).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.buttonRegistration).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i("TAG", "buttonRegistri");
-                if (user != null && log.length() > 0 && pas.length() > 0) {
-                    userDao.save(user);
+                getUser();
+                if (log.length() > 0 && pas.length() > 0) {
+                    userDao.save(getUser());
                     textInfo.setTextColor(getResources().getColor(R.color.colorGreen));
                     textInfo.setText("Регистрация успешна");
+                } else {
+                    textInfo.setTextColor(getResources().getColor(R.color.colorRed));
+                    textInfo.setText("Некоректный логин или пароль");
                 }
-
-
             }
         });
+    }
+
+    private User getUser() {
+        log = textLogIn.getText().toString();
+        pas = textPass.getText().toString();
+        return new User(log, pas);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("login", log);
+        outState.putString("pass", pas);
+        Log.i("TAG", "onSaveInstanceState");
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        Log.i("TAG", "onRestoreInstanceState");
+        textLogIn.setText(savedInstanceState.getString("login"));
+        textPass.setText(savedInstanceState.getString("pass"));
+        super.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
@@ -79,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
         if (mLogin) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             Log.i("TAG", "MainActivity.class ===========");
-            finish();
+            //finish();
         }
         super.onStart();
     }
@@ -88,13 +106,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onResume() {
         Log.i("TAG", "onResume");
         super.onResume();
-    }
-
-    @Override
-    protected void onPostResume() {
-        Log.i("TAG", "onPostResume");
-
-        super.onPostResume();
     }
 
     @Override
