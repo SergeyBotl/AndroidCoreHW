@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -13,6 +14,8 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         TextView textView = (TextView) findViewById(R.id.textView);
+        final EditText editText=(EditText)findViewById(R.id.editText);
+
         Intent intent = getIntent();
         textView.setText(
                 "Id: " + intent.getLongExtra("id", 0)
@@ -24,7 +27,7 @@ public class DetailsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, editText.getText().toString());
                 sendIntent.setType("text/plain");
                 startActivity(sendIntent);
             }
