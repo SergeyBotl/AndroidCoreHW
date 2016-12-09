@@ -13,8 +13,8 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        TextView textView = (TextView) findViewById(R.id.textView);
-        final EditText editText=(EditText)findViewById(R.id.editText);
+        final TextView textView = (TextView) findViewById(R.id.textView);
+        final EditText editText = (EditText) findViewById(R.id.editText);
 
         Intent intent = getIntent();
         textView.setText(
@@ -28,8 +28,10 @@ public class DetailsActivity extends AppCompatActivity {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, editText.getText().toString());
+                sendIntent.putExtra(Intent.EXTRA_TITLE, textView.getText().toString());
                 sendIntent.setType("text/plain");
                 startActivity(sendIntent);
+                editText.setText("");
             }
         });
 
