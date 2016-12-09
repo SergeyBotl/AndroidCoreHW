@@ -29,7 +29,7 @@ public class CustomAdapter extends ArrayAdapter <String>{
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder=null;
+        ViewHolder holder;
         String text= getItem(position);
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -41,8 +41,15 @@ public class CustomAdapter extends ArrayAdapter <String>{
         }else {
             holder=(ViewHolder)convertView.getTag();
         }
+        final int i=position;
         holder.textView.setText(text.toString());
-        Log.i("tag", "position " + position);
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("tag", "position "+ i );
+            }
+        });
+
         return convertView;
     }
 

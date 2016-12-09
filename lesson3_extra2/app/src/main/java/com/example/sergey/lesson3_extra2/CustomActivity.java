@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CustomActivity extends AppCompatActivity {
+   CustomAdapter customAdapter;
+
     String[] s = {"a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x"};
     List<String> list = new ArrayList<>(Arrays.asList(s));
     @Override
@@ -19,7 +21,7 @@ public class CustomActivity extends AppCompatActivity {
 
 
         ListView listView = (ListView) findViewById(R.id.listViewCust);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.custom_layout, list);
-        listView.setAdapter(adapter);
+        customAdapter=new  CustomAdapter (this, R.layout.custom_layout, list);
+        listView.setAdapter(customAdapter);
     }
 }
