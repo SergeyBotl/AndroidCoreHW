@@ -35,7 +35,8 @@ public class User implements Parcelable {
         tel = parcel.readInt();
         age = parcel.readInt();
         dateReg = parcel.readString();
-        parcel.readList(imageUrls, String.class.getClassLoader());
+        parcel.readList(imageUrls,ClassLoader.getSystemClassLoader());
+       // parcel.readList(imageUrls, String.class.getClassLoader());
     }
 
     public long getId() {
@@ -78,7 +79,7 @@ public class User implements Parcelable {
         this.age = age;
     }
 
-    public String getFormattedEndTime() {
+    public String getDateReg() {
         return DATE_FORMAT.format(new Date(dateReg));
     }
 

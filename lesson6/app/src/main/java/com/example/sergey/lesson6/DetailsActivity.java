@@ -23,8 +23,6 @@ public class DetailsActivity extends AppCompatActivity {
             textView.setText(entity.toString());
         }
 
-            // "Id: " + intent.getLongExtra("id", 0)+ " \nTel: " + intent.getIntExtra("tel", 0)+ " \nAge: " + intent.getIntExtra("age", 0));
-
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
