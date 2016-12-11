@@ -1,20 +1,41 @@
 package com.example.sergey.lesson6;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+public class User implements Parcelable {
+    private SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/mm/yyyy", Locale.GERMANY);
     private long id;
     private String firstName;
     private String lastName;
     private int tel;
     private int age;
+    private String dateReg;
+    private List<String> imageUrls = new ArrayList<>();
 
-
-    public User( String firstName, String lastName, int tel, int age) {
-
+    public User(String firstName, String lastName, int tel, int age, Date dateReg, List<String> imageUrls) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.tel = tel;
         this.age = age;
+        this.dateReg = DATE_FORMAT.format(dateReg);
+        this.imageUrls = imageUrls;
+    }
+
+    private User(Parcel parcel) {
+        id = parcel.readLong();
+        firstName = parcel.readString();
+        lastName = parcel.readString();
+        tel = parcel.readInt();
+        age = parcel.readInt();
+        dateReg = parcel.readString();
+        parcel.readList(imageUrls, String.class.getClassLoader());
     }
 
     public long getId() {
@@ -57,32 +78,49 @@ public class User {
         this.age = age;
     }
 
+    public String getFormattedEndTime() {
+        return DATE_FORMAT.format(new Date(dateReg));
+    }
+
+    public static  final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+
+        @Override
+        public User createFromParcel(Parcel parcel) {
+            return new User(parcel);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        if (tel != user.tel) return false;
-        if (age != user.age) return false;
-        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null)
-            return false;
-        return lastName != null ? lastName.equals(user.lastName) : user.lastName == null;
-
+    public int describeContents() {
+        return 0;
     }
 
     @Override
-    public int hashCode() {
-        int result = firstName != null ? firstName.hashCode() : 0;
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + tel;
-        result = 31 * result + age;
-        return result;
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(id);
+        parcel.writeString(firstName);
+        parcel.writeString(lastName);
+        parcel.writeInt(tel);
+        parcel.writeInt(age);
+        parcel.writeString(dateReg);
+        parcel.writeList(imageUrls);
     }
 
     @Override
     public String toString() {
-        return    firstName + "  "+ lastName ;
+        return "User{" +
+                "id=" + id +
+                ",\n firstName='" + firstName + '\'' +
+                ",\n lastName='" + lastName + '\'' +
+                ",\n tel=" + tel +
+                ",\n age=" + age +
+                ",\n dateReg='" + dateReg + '\'' +
+                ",\n imageUrls=" + imageUrls +
+                '}';
     }
 }
