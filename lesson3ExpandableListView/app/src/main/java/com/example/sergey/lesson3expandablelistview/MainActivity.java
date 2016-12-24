@@ -88,8 +88,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
             if (view == null) {
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = inflater.inflate(R.layout.expandeble_group, null);
+                /*LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                view = inflater.inflate(R.layout.expandeble_group, null);*/
+
+                view = LayoutInflater.from(context).inflate(R.layout.expandeble_group, null);
             }
 
             if (b) {
