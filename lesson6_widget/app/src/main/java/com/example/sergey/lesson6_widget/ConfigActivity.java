@@ -76,6 +76,7 @@ public class ConfigActivity extends AppCompatActivity {
         editor.putInt(WIDGET_COLOR + widgetID, color);
         editor.commit();
 
+        //для изменения виджета
         AppWidgetManager appWidgetManager=AppWidgetManager.getInstance(this);
         MyWidget.updateWidget(this,appWidgetManager,sp,widgetID);
 
