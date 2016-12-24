@@ -63,13 +63,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             User user = list.get(position);
-            TextView textView=null;
+            TextView textView = null;
             if (convertView == null) {
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.custom, null);
-                 textView = (TextView) convertView.findViewById(R.id.textView3);
+               // LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+                //convertView = inflater.inflate(R.layout.custom, null);
+                convertView=getLayoutInflater().inflate(R.layout.custom, null);
+                textView = (TextView) convertView.findViewById(R.id.textView3);
             }
-                  textView.setText(user.getFirstName() + " " + user.getLastName());
+            textView.setText(user.getFirstName() + " " + user.getLastName());
 
             return convertView;
         }

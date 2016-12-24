@@ -11,6 +11,8 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+          getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+          getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         findViewById(R.id.buttonAdapter).setOnClickListener(new View.OnClickListener() {
             @Override
