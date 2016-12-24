@@ -81,7 +81,7 @@ public class ConfigActivity extends AppCompatActivity {
 
         // положительный ответ
         setResult(RESULT_OK, resultValue);
-//MyWidget.updateWidget()
+
         Log.d(LOG_TAG, "finish config " + widgetID);
         finish();
 
