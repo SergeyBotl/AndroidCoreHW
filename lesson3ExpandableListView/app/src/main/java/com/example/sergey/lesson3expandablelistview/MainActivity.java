@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) header.findViewById(R.id.textView)).setText(" Список мобил");
         ExpandableListView listView = (ExpandableListView) findViewById(R.id.exView);
 
-        ExpListAdapter adapter = new ExpListAdapter(getApplicationContext(), dao.getMobilaList());
+        ExpListAdapter adapter = new ExpListAdapter(this, dao.getMobilaList());
         listView.addHeaderView(header);
         listView.setAdapter(adapter);
     }
@@ -115,8 +115,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (view == null) {
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = inflater.inflate(R.layout.expendable_child, null);
+               // LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+               // view = inflater.inflate(R.layout.expendable_child, null);
+
+                view = LayoutInflater.from(context).inflate(R.layout.expendable_child, null);
             }
 
             Log.i("Tag", "getChildView " + count2++ + " child " + j + j1 + " " + b);
